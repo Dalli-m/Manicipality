@@ -1,8 +1,13 @@
 import { Link } from 'react-router-dom';
 import './Header.css';
 import image1 from '../assets/image1.png'; 
+import { Link } from 'react-router-dom';
+import './Header.css';
+import image1 from '../assets/image1.png'; 
+import { useMobileMenu } from '../hooks/useMobileMenu';
 
 export default function Header() {
+  useMobileMenu();
   return (
     <header className="municipality-header">
       <div className="header-top">
@@ -29,5 +34,4 @@ export default function Header() {
     </header>
     
   );
-  
 }
