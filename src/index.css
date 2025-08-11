@@ -1,0 +1,21 @@
+:root {
+
+  /* Main Color Palette */
+  --primary-blue: #2c3e50;       /* Dark blue (your main color) */
+  --accent-blue: #3498db;         /* Bright blue (buttons/links) */
+  --light-gray: #ecf0f1;          /* Light background */
+  --alert-red: #e74c3c;           /* For warnings/errors */
+  --pure-white: #ffffff;          /* Text/background */
+  --warm-orange: #e67e22;         /* Optional accent */
+}
+
+body {
+background-color: var(--light-gray);
+  color: var(--primary-blue);
+}
+
+
+h1 {
+  font-size: 2em; /* Reduced from 3.2em */
+  line-height: 1.2; /* Reduced from 1.1 */
+}
