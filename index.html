@@ -12,5 +12,12 @@
     <script type="module" src="/src/main.jsx">
       
     </script>
+    <script>
+      <button class="mobile-menu-toggle">☰</button>
+document.querySelector('.mobile-menu-toggle').addEventListener('click', function() {
+  document.querySelector('nav').classList.toggle('active');
+});
+</script>
   </body>
+
 </html>

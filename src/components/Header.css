@@ -1,49 +1,77 @@
-/* ===== Base Header Styles ===== */
+/* ===== GLOBAL MOBILE RESET ===== */
+html, body {
+  width: 100%;
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: #f5f5f5;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* ===== HEADER STYLES ===== */
 .municipality-header {
   width: 100%;
   max-width: 100%;
   margin: 0;
   padding: 0;
-  position: relative;
-  overflow-x: hidden; /* Critical for mobile */
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  background-color: #fff;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  overflow: hidden;
 }
 
-/* ===== Top Bar ===== */
 .header-top {
   display: flex;
-  flex-wrap: wrap; /* Allows wrapping on mobile */
+  flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 5%; /* Percentage padding for responsiveness */
+  padding: 1rem 5%;
   max-width: 100%;
   margin: 0 auto;
   gap: 1rem;
+  background-color: #2c3e50;
+  color: white;
 }
 
-/* ===== Logo Section ===== */
 .logo {
   display: flex;
   align-items: center;
   gap: 1rem;
-  flex-shrink: 0; /* Prevents logo squishing */
-  min-width: 150px; /* Minimum space guarantee */
+  flex-shrink: 0;
+  min-width: 150px;
 }
 
 .logo img {
-  height: auto; /* Responsive height */
+  height: auto;
   max-height: 50px;
-  width: auto; /* Maintains aspect ratio */
+  width: auto;
 }
 
 .logo h1 {
-  font-size: clamp(1rem, 3vw, 1.2rem); /* Responsive font */
+  font-size: clamp(1rem, 3vw, 1.2rem);
   font-weight: 600;
+  margin: 0;
+  color: white;
 }
 
-/* ===== Quick Links ===== */
 .quick-links {
   display: flex;
-  flex-wrap: wrap; /* Mobile wrapping */
+  flex-wrap: wrap;
   gap: 1.5rem;
   justify-content: center;
 }
@@ -53,14 +81,13 @@
   text-decoration: none;
   font-weight: 500;
   transition: color 0.3s;
-  white-space: nowrap; /* Prevents text breaking */
+  white-space: nowrap;
 }
 
 .quick-links a:hover {
   color: #3498db;
 }
 
-/* ===== Main Navigation ===== */
 nav {
   background-color: #34495e;
   padding: 1rem 0;
@@ -74,7 +101,7 @@ nav ul {
   gap: 1rem;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 5%; /* Percentage padding */
+  padding: 0 5%;
 }
 
 nav a {
@@ -91,79 +118,151 @@ nav a:hover {
   background-color: #3498db;
 }
 
-/* ===== Mobile Breakpoint (768px) ===== */
+.mobile-menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 0.5rem;
+}
+
+/* ===== MAIN CONTENT ===== */
+main {
+  padding-top: 150px; /* Space for fixed header */
+  flex: 1;
+  width: 100%;
+}
+
+.content-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 5%;
+}
+
+.content-container h1 {
+  color: #2c3e50;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  word-break: break-word;
+}
+
+.content-container h2 {
+  color: #34495e;
+  font-size: 1.5rem;
+  margin: 1.5rem 0 1rem;
+  word-break: break-word;
+}
+
+.content-container p {
+  color: #333;
+  margin-bottom: 1rem;
+  max-width: 100%;
+  overflow-wrap: break-word;
+}
+
+/* ===== FOOTER ===== */
+footer {
+  background-color: #2c3e50;
+  color: white;
+  padding: 2rem 5%;
+  text-align: center;
+  width: 100%;
+}
+
+/* ===== MOBILE BREAKPOINTS ===== */
 @media (max-width: 768px) {
   .header-top {
-    flex-direction: row; /* Changed from column */
+    flex-direction: row;
     padding: 1rem 5%;
-    gap: 1.5rem;
+    gap: 1rem;
+    position: relative;
   }
 
   .logo {
-    justify-content: center;
     width: 100%;
+    justify-content: center;
   }
 
   .quick-links {
     width: 100%;
     justify-content: space-around;
     gap: 0.8rem;
+    order: 3;
+    padding: 0.5rem 0;
+  }
+
+  nav {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+    padding: 0;
+  }
+
+  nav.active {
+    max-height: 500px;
+    padding: 1rem 0;
   }
 
   nav ul {
-    flex-wrap: wrap;
+    flex-direction: column;
     gap: 0.5rem;
+    padding: 0 5%;
   }
 
   nav a {
-    padding: 0.6rem;
-    font-size: 0.9rem;
+    width: 100%;
+    text-align: center;
+    padding: 0.8rem;
+  }
+
+  .mobile-menu-toggle {
+    display: block;
+    position: absolute;
+    right: 20px;
+    top: 20px;
+  }
+
+  main {
+    padding-top: 120px;
   }
 }
 
-/* ===== Small Mobile Breakpoint (480px) ===== */
 @media (max-width: 480px) {
   .logo {
     flex-direction: column;
     text-align: center;
+    gap: 0.5rem;
   }
 
   .logo img {
     max-height: 40px;
   }
 
+  .logo h1 {
+    font-size: 1rem;
+  }
+
+  .content-container h1 {
+    font-size: 1.5rem;
+  }
+
+  .content-container h2 {
+    font-size: 1.2rem;
+  }
+
   nav ul {
-    flex-direction: column;
-    align-items: center;
     gap: 0.3rem;
   }
 
   nav a {
-    width: 100%;
-    text-align: center;
-  }
-}
-
-
-.mobile-menu-toggle {
-  display: none;
-}
-
-@media (max-width: 768px) {
-  .mobile-menu-toggle {
-    display: block;
-    background: none;
-    border: none;
-    color: white;
-    font-size: 1.5rem;
-    cursor: pointer;
-  }
-  
-  nav ul {
-    display: none;
-  }
-  
-  nav ul.active {
-    display: flex;
+    padding: 0.6rem;
+    font-size: 0.9rem;
   }
 }
