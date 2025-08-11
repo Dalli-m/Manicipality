@@ -6,7 +6,7 @@ export default function HeroBanner() {
     <section className="hero-banner">
       <div className="hero-content">
         <div className="hero-text">
-          <h1>Municipality of BB</h1>
+          <h1>Municipality of Barelias</h1>
           <p>Your community hub for information, services and engagement</p>
           
         </div>
