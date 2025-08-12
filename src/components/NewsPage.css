@@ -117,7 +117,7 @@
   border: 1px solid #3498db;
 }
 
-/* Responsive */
+
 @media (max-width: 768px) {
   .news-page {
     padding: 1.5rem;

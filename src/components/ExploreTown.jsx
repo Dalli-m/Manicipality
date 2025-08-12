@@ -35,7 +35,7 @@ export default function ExploreTown() {
       action: () => setShowPaymentPopup(true)
     },
     {
-      id: 3,
+      id: 2,
       title: "Trash Schedule",
       description: "See all times and dates",
       icon: "fas fa-trash-alt",
@@ -43,7 +43,7 @@ export default function ExploreTown() {
       action: () => setShowTrashSchedule(true)
     },
     {
-      id: 4,
+      id: 3,
       title: "Report a Problem",
       description: "We're here to help",
       icon: "fas fa-exclamation-triangle",
