@@ -6,6 +6,10 @@ import './App.css';
 import NewsPage from './components/NewsPage';
 import EventsPage from './components/EventsPage';
 import ReportIssue from './components/ReportIssue';
+import ProtectedRoute from './components/ProtectedRoute';
+import AdminLogin from './components/AdminLogin';
+import AdminDashboard from './components/AdminDashboard';
+
 
 
 
@@ -20,6 +24,10 @@ function App() {
         <Route path="/news" element={<NewsPage />} />
         <Route path="/events" element={<EventsPage />} />
         <Route path="/report-issue" element={<ReportIssue />} />
+        <Route path="/admin/login" element={<AdminLogin />} />
+        <Route element={<ProtectedRoute />}>
+          <Route path="/admin/dashboard" element={<AdminDashboard />} />
+        </Route>
         
         
         
