@@ -1,19 +1,4 @@
-/* ===== GLOBAL RESET ===== */
-html {
-  font-size: 16px;
-  overflow-x: hidden;
-}
-
-body {
-  margin: 0;
-  padding: 0;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  line-height: 1.5;
-  position: relative;
-  padding-top: 70px; /* Space for fixed header */
-}
-
-/* ===== COMPACT HEADER ===== */
+/* ===== HEADER STRUCTURE ===== */
 .municipality-header {
   position: fixed;
   top: 0;
@@ -21,116 +6,108 @@ body {
   width: 100%;
   z-index: 1000;
   background: #2c3e50;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-}
-
-.header-container {
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
-  max-width: 100%;
 }
 
-/* ===== TOP BAR ===== */
 .header-top {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto; 
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  padding: 0.5rem 1rem;
+  padding: 1.5rem 1rem;
 }
+
 
 .logo {
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  font-family: 'Arial', sans-serif;
 }
 
 .logo img {
-  height: 40px;
+  height: 50px; /* Smaller logo */
   width: auto;
 }
 
 .logo h1 {
   color: white;
-  font-size: 1.1rem;
+  font-size: 1rem; /* Smaller text */
   margin: 0;
+  font-weight: 500;
 }
 
-/* ===== MOBILE MENU BUTTON ===== */
-.mobile-menu-btn {
-  background: none;
-  border: none;
-  color: white;
-  font-size: 1.5rem;
-  cursor: pointer;
-  padding: 0.5rem;
-  display: block;
-}
-
-/* ===== NAVIGATION ===== */
-.main-nav {
+/* ===== CENTERED NAVIGATION MENU ===== */
+.municipality-header nav {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto; /* Center the nav */
   background-color: #34495e;
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.3s ease-out;
 }
 
-.main-nav.active {
-  max-height: 500px;
-}
-
-.main-nav ul {
+.municipality-header ul {
+  display:flex;
+  justify-content: center; 
   list-style: none;
-  margin: 0;
+  margin: 25px 250px; 
   padding: 0;
+  font-size:x-large;
+  font-family: 'Arial', sans-serif;
 }
 
-.main-nav li {
-  border-top: 1px solid #3d5166;
+.municipality-header li {
+  margin: 0 0.5rem;
 }
 
-.main-nav a {
-  display: block;
+.municipality-header a {
   color: white;
   text-decoration: none;
-  padding: 0.8rem 1rem;
+  padding: 3rem 1.5rem;
   transition: background-color 0.3s;
+  max-width: 1200px; 
+  padding: 15px 25px; /* Adjusted padding for smaller header */
 }
 
-.main-nav a:hover {
+.municipality-header a:hover {
   background-color: #3498db;
 }
 
-/* ===== DESKTOP VIEW ===== */
-@media (min-width: 769px) {
-  body {
-    padding-top: 60px;
+/* ===== MOBILE MENU ===== */
+@media (max-width: 768px) {
+  .header-top {
+    justify-content: space-between; /* Logo left, hamburger right */
   }
-  
-  .header-container {
-    flex-direction: row;
-    justify-content: space-between;
-    max-width: 1200px;
-    margin: 0 auto;
+
+  .municipality-header nav {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
   }
-  
+
+  .municipality-header nav.active {
+    max-height: 500px;
+  }
+
+  .municipality-header ul {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .municipality-header li {
+    width: 100%;
+    text-align: center;
+    border-top: 1px solid #3d5166;
+  }
+
   .mobile-menu-btn {
-    display: none;
-  }
-  
-  .main-nav {
-    max-height: none;
-    background: transparent;
-  }
-  
-  .main-nav ul {
-    display: flex;
-  }
-  
-  .main-nav li {
+    display: block;
+    background: none;
     border: none;
-  }
-  
-  .main-nav a {
-    padding: 1rem;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
   }
 }

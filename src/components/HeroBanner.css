@@ -7,12 +7,14 @@
   justify-content: center;
   background-size: cover;
   background-position: center;
+  padding: 5rem 0 ;
+  font-family: 'Arial', sans-serif;
 }
 
 .hero-content {
   width: 100%;
   max-width: 1200px;
-  padding: 0 2rem;
+  padding: 10 2rem;
   text-align: center;
   z-index: 2;
 }
