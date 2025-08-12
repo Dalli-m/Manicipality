@@ -2,8 +2,13 @@ html, body, #root {
   height: 100%;
   margin: 0;
   padding: 0;
-  width: 100%; /* Add this to ensure full width */
+  width: 100%; 
+   text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
 }
+
 
 .app {
   display: flex;
