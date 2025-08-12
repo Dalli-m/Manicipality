@@ -18,12 +18,12 @@ export default function Footer() {
         <div className="footer-section">
           <h3>Quick Links</h3>
           <ul>
-            <li><a href="/">Home</a></li>
-            <li><a href="/services">Services</a></li>
-            <li><a href="/news">News</a></li>
-            <li><a href="/events">Events</a></li>
-            <li><a href="/report-issue">Report Issue</a></li>
-            <li><a href="/contact">Contact</a></li>
+            <li><Link to="/">Home</Link></li>
+            <li><Link to="/services">Services</Link></li>
+            <li><Link to="/news">News</Link></li>
+            <li><Link to="/events">Events</Link></li>
+            <li><Link to="/report-issue">Report Issue</Link></li>
+            <li><Link to="/contact">Contact</Link></li>
           </ul>
         </div>
       </div>
