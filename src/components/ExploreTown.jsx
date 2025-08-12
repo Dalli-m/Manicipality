@@ -21,7 +21,7 @@ export default function ExploreTown() {
 
   const handlePaymentSubmit = (e) => {
     e.preventDefault();
-    // This would connect to your payment gateway API
+  
     window.open(`https://payment.whish.money/?municipality=yourcity&account=${paymentInfo.accountNumber}&amount=${paymentInfo.amount}`);
   };
 

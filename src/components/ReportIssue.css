@@ -2,8 +2,9 @@
 .report-issue-container {
   max-width: 1200px;
   margin: 0 auto;
-  padding:  5rem;
+  padding:  9rem;
   font-family: 'Arial', sans-serif;
+  padding-bottom: 50px;
 }
 
 .issue-hero {

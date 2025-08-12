@@ -5,7 +5,6 @@ import Footer from '../components/Footer';
 import wishMoneyLogo from '../assets/image12.png';
 
 export default function ServicesPage() {
-  
   const [showPotholePopup, setShowPotholePopup] = useState(false);
   const [imagePreview, setImagePreview] = useState(null);
   const [potholeData, setPotholeData] = useState({
@@ -182,11 +181,16 @@ const handleFeedbackSubmit = (e) => {
   ];
 
   return (
+    
+ 
+          
+
     <div className="services-page">
       <Header />
       <main>
         <section className="full-services">
           <h1>Municipal Services</h1>
+            
           <div className="services-grid">
             {allServices.map(service => (
               service.action ? (
