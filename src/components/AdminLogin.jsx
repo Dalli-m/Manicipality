@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import './AdminLogin.css';
 
 export default function AdminLogin() {
@@ -38,7 +38,9 @@ export default function AdminLogin() {
   };
 
   return (
+    
     <div className="admin-login-container">
+        
       <div className="admin-login-box">
         <h2>Admin Login</h2>
         <form onSubmit={handleSubmit}>
@@ -68,7 +70,11 @@ export default function AdminLogin() {
           {error && <div className="error-message">{error}</div>}
           <button type="submit" className="login-button">Login</button>
         </form>
+        <div className="home-button-container">
+    <Link to="/" className="home-button">← Back to Home</Link>
+  </div>
+</div>
       </div>
-    </div>
+
   );
 }
