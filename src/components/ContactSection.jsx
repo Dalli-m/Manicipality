@@ -20,6 +20,7 @@ export default function ContactSection() {
         <div className="contact-methods">
           <div className="contact-info">
             <div className="info-item">
+              
               <h4>Phone</h4>
               <p>+1 (234) 567-8900</p>
             </div>
