@@ -1,4 +1,5 @@
 using System.Security.Claims;
+using System.Text.Json;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -72,11 +73,30 @@ public class ServiceRequestsController : ControllerBase
 
  
     [HttpPost]
-    [Authorize(Roles = "Citizen")]
-    [SwaggerResponse(201, "Service request created", typeof(ServiceRequest))]
-    [SwaggerResponse(400, "Invalid request data")]
-    public async Task<ActionResult<ServiceRequest>> CreateServiceRequest(
-        [FromBody] ServiceRequestDto requestDto)
+//[Authorize(Roles = "Citizen")]
+public async Task<ActionResult<ServiceRequest>> CreateServiceRequest(
+    [FromBody] ServiceRequestDto requestDto)
+{
+    _logger.LogInformation("CreateServiceRequest called");
+    _logger.LogInformation($"Request data: {JsonSerializer.Serialize(requestDto)}");
+
+    
+    var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+    _logger.LogInformation($"User ID from token: {userId}");
+
+    if (string.IsNullOrEmpty(userId))
+    {
+        _logger.LogWarning("User ID is null or empty - authentication issue");
+        return Unauthorized(new { message = "User not authenticated" });
+    }
+
+    if (!ModelState.IsValid)
+    {
+        _logger.LogWarning("Model state invalid");
+        return BadRequest(ModelState);
+    }
+
+    try
     {
         var serviceRequest = new ServiceRequest
         {
@@ -87,16 +107,28 @@ public class ServiceRequestsController : ControllerBase
             Urgency = requestDto.Urgency,
             CreatedAt = DateTime.UtcNow,
             Status = "Pending",
-            UserId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value
+            UserId = userId
         };
 
+        _logger.LogInformation("Adding service request to context");
         _context.ServiceRequests.Add(serviceRequest);
-        await _context.SaveChangesAsync();
+
+        _logger.LogInformation("Saving changes to database");
+        var result = await _context.SaveChangesAsync();
+        _logger.LogInformation($"Save changes result: {result} rows affected");
+
+        _logger.LogInformation($"Service request created with ID: {serviceRequest.Id}");
 
         return CreatedAtAction(nameof(GetServiceRequest), 
             new { id = serviceRequest.Id }, 
             serviceRequest);
     }
+    catch (Exception ex)
+    {
+        _logger.LogError(ex, "Error creating service request");
+        return StatusCode(500, new { message = "Internal server error", error = ex.Message });
+    }
+}
 
 
     [HttpPut("{id}/status")]

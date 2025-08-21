@@ -19,9 +19,7 @@ public class AdminController : ControllerBase
         _context = context;
     }
 
-    /// <summary>
-    /// Get system statistics
-    /// </summary>
+   
     [HttpGet("stats")]
     [SwaggerResponse(200, "System statistics")]
     public async Task<ActionResult<object>> GetStats()
@@ -41,9 +39,6 @@ public class AdminController : ControllerBase
         return Ok(stats);
     }
 
-    /// <summary>
-    /// Generate reports
-    /// </summary>
     [HttpGet("reports")]
     [SwaggerResponse(200, "Report data")]
     public async Task<ActionResult> GenerateReport([FromQuery] AdminReportQueryDto query)
@@ -52,7 +47,7 @@ public class AdminController : ControllerBase
         var potholeReports = _context.PotholeReports.AsQueryable();
         var buildingPermits = _context.BuildingPermits.AsQueryable();
 
-        // Apply filters
+        
         if (!string.IsNullOrEmpty(query.Status))
         {
             serviceRequests = serviceRequests.Where(r => r.Status == query.Status);

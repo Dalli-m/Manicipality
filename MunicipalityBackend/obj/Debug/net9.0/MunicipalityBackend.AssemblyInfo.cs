@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("MunicipalityBackend")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f9785c4358e23e7dd4b90d70111a1fa36d272756")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1bec2111959c0313730e8ddf49f4764f80de808e")]
 [assembly: System.Reflection.AssemblyProductAttribute("MunicipalityBackend")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MunicipalityBackend")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
